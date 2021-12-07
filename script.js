@@ -22,6 +22,8 @@ function createSnake (){
   }
 }
 
+document.addEventListener('keydown', update);
+
 function startGame(){    
   createBG();
   createSnake();
