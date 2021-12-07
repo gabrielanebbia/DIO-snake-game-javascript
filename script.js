@@ -1,4 +1,5 @@
 let canvas = document.getElementById("snake");
+let score = document.getElementById("score");
 let context = canvas.getContext("2d");
 let box = 32;
 
@@ -16,19 +17,19 @@ let food = {
 };
 
 function createBG() {
-  context.fillStyle = "lightgreen";
+  context.fillStyle = "rgb(200, 228, 200)";
   context.fillRect(0, 0, 16*box, 16*box);
 }
 
 function createSnake() {
   for(i = 0; i < snake.length; i++){
-    context.fillStyle = "green";
+    context.fillStyle = "grey";
     context.fillRect(snake[i].x, snake[i].y, box, box);
   }
 }
 
 function drawFood() {
-  context.fillStyle = "red";
+  context.fillStyle = "black";
   context.fillRect(food.x, food.y, box, box);
 }
 
@@ -41,6 +42,11 @@ function update(event) {
   if(event.keyCode == 40 && direction != 'up') direction = 'down';
 }
 
+function gameOver() {
+  score.innerText = "Game Over!"
+  score.style.backgroundColor = "black";
+}
+
 function startGame() {    
   if(snake[0].x > 15*box && direction == "right") snake[0].x = 0;
   if(snake[0].x < 0 && direction == 'left') snake[0].x = 16 * box;
@@ -49,8 +55,8 @@ function startGame() {
 
   for(i = 1; i < snake.length; i++) {
   if(snake[0].x == snake[i].x && snake[0].y == snake[i].y) {
-    clearInterval(jogo);
-    alert('Game Over :(');
+    clearInterval(game);
+    gameOver();
   }
 }
 
@@ -63,7 +69,7 @@ function startGame() {
 
   if(direction == "right") snakeX += box;
   if(direction == "left") snakeX -= box;
-  if (direction == "up") snakeY -= box;
+  if(direction == "up") snakeY -= box;
   if(direction == "down") snakeY += box;
 
   if(snakeX != food.x || snakeY != food.y) {
@@ -74,8 +80,8 @@ function startGame() {
   }
 
   let newHead = {
-      x: snakeX,
-      y: snakeY
+    x: snakeX,
+    y: snakeY
   };
 
   snake.unshift(newHead);
