@@ -5,3 +5,8 @@ Projeto desenvolvido no bootcamp HTML Web Developer oferecido pela [Digital Inno
 ## Objetivo do projeto
 
 Projeto com o desafio de recriar o jogo clássico da cobrinha, utilizando HTML, CSS e JavaScript.
+
+## Resultado
+
+![Resultado](/img/tela.png)
+![Resultado](/img/game-over.png)
